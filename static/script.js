@@ -1,5 +1,6 @@
 let chart;
 
+// ---------------- AI CALL ----------------
 async function runAI() {
 
     let wind = document.getElementById("wind").value;
@@ -21,11 +22,11 @@ async function runAI() {
         `Best: ${data.recommendation}`;
 
     // Chart
-    let ctx = document.getElementById("chart").getContext("2d");
+    let ctxChart = document.getElementById("chart").getContext("2d");
 
     if (chart) chart.destroy();
 
-    chart = new Chart(ctx, {
+    chart = new Chart(ctxChart, {
         type: 'bar',
         data: {
             labels: ["Vortex", "Traditional"],
@@ -35,42 +36,65 @@ async function runAI() {
             }]
         }
     });
-    
 
-    startSimulation(wind);
+    // Start simulation
+    startSimulation(wind, terrain);
 }
 
-// Simulation
-function startSimulation(windSpeed) {
+
+// ---------------- SIMULATION ----------------
+function startSimulation(windSpeed, terrain) {
 
     let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
 
     let angle = 0;
 
-    // wind particles
+    // 🌄 Background Image
+    let bgImage = new Image();
+
+    let imageMap = {
+        "Urban": "/static/images/urban.jpg",
+        "Coastal": "/static/images/coastal.jpg",
+        "Rural": "/static/images/rural.jpg",
+        "Hilly": "/static/images/hilly.jpg"
+    };
+
+    bgImage.src = imageMap[terrain];
+
+    // 🌪️ Wind particles
     let particles = [];
     for (let i = 0; i < 30; i++) {
         particles.push({
-            x: Math.random() * 800,
-            y: Math.random() * 300
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height
         });
     }
 
-    
-
     function draw() {
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        // ✅ Draw background FIRST
+        ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+
+        // 🌫️ Slight dark overlay (for better visibility)
+        ctx.fillStyle = "rgba(0,0,0,0.5)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
         // 🌪️ Wind particles
-        ctx.fillStyle = "rgba(0,150,255,0.5)";
+        ctx.fillStyle = "rgba(0,200,255,0.9)";
         particles.forEach(p => {
             ctx.beginPath();
-            ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+            ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
             ctx.fill();
 
             p.x += windSpeed * 0.5;
-            if (p.x > canvas.width) p.x = 0;
+
+            if (p.x > canvas.width) {
+                p.x = 0;
+                p.y = Math.random() * canvas.height;
+            }
         });
 
         // 🌬️ Traditional Windmill
@@ -82,28 +106,35 @@ function startSimulation(windSpeed) {
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.lineTo(70, 0);
-            ctx.strokeStyle = "black";
-            ctx.lineWidth = 4;
+            ctx.strokeStyle = "#ffffff";
+            ctx.lineWidth = 6;
+            ctx.shadowColor = "cyan";
+            ctx.shadowBlur = 10;
             ctx.stroke();
             ctx.rotate(2 * Math.PI / 3);
         }
         ctx.restore();
 
-        // 🌀 Vortex (curved vibration)
+        // 🌀 Vortex Windmill
         let v = Math.sin(angle * 3) * 15;
 
         ctx.beginPath();
         ctx.moveTo(600 + v, 80);
         ctx.quadraticCurveTo(600 - v, 150, 600 + v, 220);
-        ctx.strokeStyle = "red";
-        ctx.lineWidth = 6;
+        ctx.strokeStyle = "#ff4d4d";
+        ctx.lineWidth = 8;
+        ctx.shadowColor = "red";
+        ctx.shadowBlur = 15;
         ctx.stroke();
 
-        // speed scaling
+        // 🔄 Speed control
         angle += windSpeed * 0.03;
 
         requestAnimationFrame(draw);
     }
 
-    draw();
+    // Start animation ONLY after image loads
+    bgImage.onload = () => {
+        draw();
+    };
 }

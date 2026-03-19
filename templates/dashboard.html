@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<h1>🌬️ Windmill AI Dashboard</h1>
+
+
+
+<div class="container">
+
+<div class="card">
+    <h3>Inputs</h3>
+
+    <select id="terrain">
+        <option>Urban</option>
+        <option>Coastal</option>
+        <option>Rural</option>
+        <option>Hilly</option>
+    </select>
+
+    <input type="range" id="wind" min="1" max="25">
+    <input type="range" id="budget" min="10000" max="200000">
+
+    <button onclick="runAI()">Run Simulation</button>
+</div>
+
+<div class="card">
+    <h3>Results</h3>
+    <p id="output"></p>
+    <h2 id="result"></h2>
+</div>
+
+</div>
+
+<canvas id="chart" width="400" height="200"></canvas>
+<canvas id="canvas" width="800" height="300"></canvas>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

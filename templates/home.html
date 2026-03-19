@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Windmill AI - Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- 🔝 NAVBAR -->
+    <div style="display:flex; justify-content:space-between; padding:20px;">
+        <h2>🌬️ Windmill AI</h2>
+        <a href="/dashboard">
+            <button>Go to Dashboard</button>
+        </a>
+    </div>
+
+    <!-- 🎥 VIDEOS -->
+    <div class="container">
+
+        <div class="card">
+            <h3>🌀 Vortex Windmill</h3>
+            <iframe width="300" height="200"
+                src="https://www.youtube.com/embed/VIDEO_ID?start=START_TIME&end=END_TIME&autoplay=1&mute=1&loop=1&playlist=lirOhO4nKIc"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+            <p>
+
+                A vortex windmill, also known as a bladeless wind turbine, is a modern way of generating wind energy
+                without using rotating blades. Instead of spinning like traditional windmills, it works using a
+                phenomenon called vortex shedding.
+                <br>
+                When wind flows past the cylindrical structure of the vortex windmill, it creates alternating pressure
+                zones that make the structure vibrate. These vibrations are then converted into electrical energy using
+                a generator at the base. The system typically consists of a tall mast, an elastic rod, and a power
+                generation unit.
+                <br>
+                One of the biggest advantages of vortex windmills is that they are quiet and safer for birds, since
+                there are no spinning blades. They also have lower maintenance costs because they contain fewer moving
+                parts. Additionally, they can operate in a wider range of wind conditions and are more compact, making
+                them suitable for urban areas.
+                <br>
+                However, vortex windmills currently produce less power compared to traditional turbines, which limits
+                their large-scale usage. They are still under development and are mainly used for small-scale or
+                experimental purposes.
+                <br>
+                Overall, vortex windmills represent an innovative and eco-friendly alternative to traditional wind
+                energy systems, with great potential for the future.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🌬️ Traditional Windmill</h3>
+            <iframe width="300" height="200"
+                src="https://www.youtube.com/embed/VIDEO_ID?start=2&end=20&autoplay=1&mute=1&loop=1&playlist=qSWm_nprfqE"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+            <p>
+                A traditional windmill, also known as a **wind turbine**, is a widely used device that converts wind
+                energy into electrical power using large rotating blades. It works on a simple principle: when wind
+                flows over the blades, it creates lift (similar to airplane wings), causing them to rotate.
+                <br>
+                The main components of a traditional windmill include **blades (rotor), hub, nacelle, gearbox,
+                generator, and tower**. As the blades spin, they turn a shaft connected to a gearbox, which increases
+                the rotational speed. This high-speed rotation drives the generator to produce electricity.
+                <br>
+
+                Traditional windmills are highly efficient and can generate **large amounts of power**, making them
+                suitable for wind farms and large-scale electricity production. They are commonly installed in open
+                areas like plains, coastal regions, and offshore locations where wind speeds are high and consistent.
+                <br>
+
+                However, they also have some drawbacks. These turbines can be **noisy**, require regular maintenance due
+                to many moving parts, and may pose a threat to birds and bats. They also need a lot of space and strong
+                wind conditions to operate effectively.
+                <br>
+
+                Overall, traditional windmills remain one of the most important and reliable sources of renewable
+                energy, playing a major role in reducing dependence on fossil fuels.
+
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ⚙️ COMPONENTS -->
+    <div class="card">
+        <h3>⚙️ Components</h3>
+        <ul>
+            <li>Vortex: Mast, Alternator, Base</li>
+            <li>Traditional: Blades, Rotor, Gearbox, Generator</li>
+        </ul>
+    </div>
+
+    <!-- 👍 ADVANTAGES -->
+    <div class="container">
+
+        <div class="card">
+            <h3>👍 Advantages</h3>
+            <ul>
+                <li>Vortex: Low noise, low maintenance</li>
+                <li>Traditional: High efficiency, high output</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>👎 Disadvantages</h3>
+            <ul>
+                <li>Vortex: Lower efficiency</li>
+                <li>Traditional: Noisy, expensive</li>
+            </ul>
+        </div>
+
+    </div>
+
+    
+
+    <!-- 📊 BUTTON -->
+    <div style="text-align:center;">
+        <button onclick="generateTable()">Generate Comparison Table</button>
+    </div>
+
+    <!-- 📊 TABLE -->
+    <div id="tableSection" style="display:none; margin:20px;">
+        <table border="1" style="margin:auto; color:white;">
+            <tr>
+                <th>Feature</th>
+                <th>Vortex</th>
+                <th>Traditional</th>
+            </tr>
+            <tr>
+                <td>Efficiency</td>
+                <td>Medium</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Cost</td>
+                <td>Low</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Maintenance</td>
+                <td>Low</td>
+                <td>Medium</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function generateTable() {
+            document.getElementById("tableSection").style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>

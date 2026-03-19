@@ -40,6 +40,10 @@ input, select {
     border-radius: 8px;
     border: none;
 }
+video {
+    border-radius: 12px;
+    margin-top: 10px;
+}
 
 canvas {
     margin: 20px auto;

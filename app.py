@@ -31,6 +31,10 @@ model.fit(X, y)
 def terrain_to_number(t):
     return {"Urban":0, "Coastal":1, "Rural":2, "Hilly":3}[t]
 
+@app.route('/home')
+def home_page():
+    return render_template("home.html")
+
 @app.route('/')
 def login():
     return render_template("login.html")
@@ -42,7 +46,7 @@ def do_login():
 
     if username == USER and password == PASS:
         session['user'] = username
-        return redirect('/dashboard')
+        return redirect('/home')
     return "Invalid Login"
 
 @app.route('/dashboard')
